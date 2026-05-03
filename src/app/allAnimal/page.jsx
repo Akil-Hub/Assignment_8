@@ -16,7 +16,7 @@ const AllAnimals = async () => {
   return (
     <section className="py-12 px-6 bg-muted/40">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 mt-20">
           Our Top Cows
         </h2>
 
