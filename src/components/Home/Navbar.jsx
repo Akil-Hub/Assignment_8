@@ -37,6 +37,8 @@ const Navbar = () => {
       fetchOptions: {
         onSuccess: () => {
           router.push("/login");
+           router.refresh()
+
          
         },
       },
@@ -67,7 +69,7 @@ const Navbar = () => {
   />
 </div>
 
-          {isPending ? <p>Session is loading</p>: session ? (
+          {isPending ? <p>Session is loading</p>: session.user ? (
             <Button onClick={logOut}>Log Out</Button>
           ) : (
             <Button onClick={() => router.push("/register")}>Register</Button>

@@ -18,6 +18,7 @@ const{name,email,image} = session?.user || {}
       fetchOptions: {
         onSuccess: () => {
           router.push("/login");
+          router.refresh()
          
         },
       },
@@ -84,7 +85,7 @@ const{name,email,image} = session?.user || {}
           {/* Action Buttons */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             
-            <button className="bg-gray-600 text-white px-6 py-2 rounded-xl hover:bg-gray-700 transition">
+            <button onClick={()=> router.push('/updateProfile')} className="bg-gray-600 text-white px-6 py-2 rounded-xl hover:bg-gray-700 transition">
               Edit Profile
             </button>
 
