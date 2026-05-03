@@ -1,13 +1,27 @@
-"use client";
+
+'use client'
+import { authClient, signOut, useSession } from "@/lib/auth-client";
 
 import Image from "next/image";
+import {  useRouter } from "next/navigation";
 
-export default function ProfilePage() {
-  // 🔹 Replace this with your Better Auth session
-  const user = {
-    name: "John Doe",
-    email: "john@example.com",
-    image: "/default-avatar.png", // fallback image
+export default   function ProfilePage() {
+  
+  const router = useRouter()
+ 
+const{data:session} = useSession()
+
+const{name,email,image} = session?.user || {}
+
+ const logOut = async (params) => {
+    await signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/login");
+         
+        },
+      },
+    });
   };
 
   return (
@@ -17,7 +31,7 @@ export default function ProfilePage() {
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
         
         {/* Cover Section */}
-        <div className="h-40 bg-gradient-to-r from-green-500 to-emerald-600" />
+        <div className="h-40 bg-gradient-to-r from-gray-500 to-emerald-600" />
 
         {/* Profile Content */}
         <div className="px-6 pb-8">
@@ -27,7 +41,7 @@ export default function ProfilePage() {
             
             <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg">
               <Image
-                src={user?.image || "/default-avatar.png"}
+                src={image || "/default-avatar.png"}
                 alt="Profile Image"
                 fill
                 className="object-cover"
@@ -35,11 +49,11 @@ export default function ProfilePage() {
             </div>
 
             <h1 className="mt-4 text-2xl font-bold text-gray-900 dark:text-white">
-              {user?.name || "Anonymous User"}
+              {name || "Anonymous User"}
             </h1>
 
             <p className="text-gray-600 dark:text-gray-300 text-sm">
-              {user?.email || "No email provided"}
+              {email || "No email provided"}
             </p>
           </div>
 
@@ -70,11 +84,11 @@ export default function ProfilePage() {
           {/* Action Buttons */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             
-            <button className="bg-green-600 text-white px-6 py-2 rounded-xl hover:bg-green-700 transition">
+            <button className="bg-gray-600 text-white px-6 py-2 rounded-xl hover:bg-gray-700 transition">
               Edit Profile
             </button>
 
-            <button className="bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-white px-6 py-2 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-500 transition">
+            <button onClick={logOut} className="bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-white px-6 py-2 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-500 transition">
               Logout
             </button>
 
