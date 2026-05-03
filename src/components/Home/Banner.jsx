@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Banner() {
   return (
-    <section className="relative w-full h-[300px] md:h-[600px]">
+    <section className="relative w-full h-[300px] md:h-screen">
       {/* Background Image */}
       <Image
         src="/cow_banner.jpg" // put your image inside /public folder

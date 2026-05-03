@@ -23,7 +23,7 @@ const Navbar = () => {
 
     {
       title: "My Profile",
-      href: "/services",
+      href: "/profile",
     },
   ];
 
