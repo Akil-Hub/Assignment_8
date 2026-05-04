@@ -2,7 +2,7 @@
 import AnimalList from "@/components/Home/AnimalList";
 
 const getCows = async (params) => {
-  const res = await fetch("http://localhost:5000/cows");
+  const res = await fetch("https://cow-data-server.onrender.com/cows");
 
   const data = await res.json();
   return data;
