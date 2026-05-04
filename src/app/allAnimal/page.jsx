@@ -1,15 +1,7 @@
 
 import AnimalList from "@/components/Home/AnimalList";
+import { getCows } from "@/data/data";
 
-const getCows = async (params) => {
-const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cows`)
- if (!res.ok) {  // ← add this check
-    throw new Error(`API error: ${res.status}`)
-  }
-
-  const data = await res.json();
-  return data;
-};
 
 const AllAnimals = async () => {
   const animals = await getCows();

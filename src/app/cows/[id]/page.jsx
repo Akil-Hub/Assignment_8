@@ -4,22 +4,23 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ContactForm from "@/components/Home/ContactForm";
+import { getCowDetails } from "@/data/data";
 
-const getCow =async (id)=> {
-  const res = await fetch(`http://localhost:5000/cows/${id}`, {
-    cache: "no-store",
-  });
+// const getCow =async (id)=> {
+//   const res = await fetch(`http://localhost:5000/cows/${id}`, {
+//     cache: "no-store",
+//   });
 
-  if (!res.ok) return <p>Error in fetching cows data</p>;
+//   if (!res.ok) return <p>Error in fetching cows data</p>;
 
-  return res.json(); 
-}
+//   return res.json(); 
+// }
 
 export default async function CowDetails({ params }) {
 
   const {id} = await params
   console.log(id)
-  const cow = await getCow(id);
+  const cow = await getCowDetails(id);
 
   if (!cow) return <p>cow not found</p>;
 

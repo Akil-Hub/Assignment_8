@@ -88,3 +88,27 @@
       image: "/pink_cow.jpg",
     },
   ];
+
+
+  
+ export const getCows = async (params) => {
+const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cows`)
+ if (!res.ok) { 
+    throw new Error(`API error: ${res.status}`)
+  }
+
+  const data = await res.json();
+  return data;
+};
+
+export const getCowDetails = async (id) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cows/${id}`, {
+    cache: "no-store",
+  })
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch cow: ${res.status}`)
+  }
+
+  return res.json()
+}
