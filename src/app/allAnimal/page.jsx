@@ -2,7 +2,10 @@
 import AnimalList from "@/components/Home/AnimalList";
 
 const getCows = async (params) => {
-  const res = await fetch("https://cow-data-server.onrender.com/cows");
+const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cows`)
+ if (!res.ok) {  // ← add this check
+    throw new Error(`API error: ${res.status}`)
+  }
 
   const data = await res.json();
   return data;
