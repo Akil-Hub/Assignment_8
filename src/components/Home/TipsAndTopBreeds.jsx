@@ -4,12 +4,13 @@ import Image from 'next/image'
 
 const TipsAndTopBreeds = () => {
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 py-12 px-4 md:px-10 space-y-16 transition-colors duration-300">
+  <section className=' dark:bg-gray-900 w-full'>
+      <div className="bg-gray-50 dark:bg-gray-900 py-12 px-4 md:px-10 space-y-16 transition-colors duration-300 wrapper">
       
-      {/* ================= QURBANI TIPS ================= */}
+    
       <section>
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
-          🕌 Qurbani Tips
+          Qurbani Tips
         </h2>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -29,10 +30,9 @@ const TipsAndTopBreeds = () => {
         </div>
       </section>
 
-      {/* ================= TOP BREEDS ================= */}
       <section>
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
-          🐄 Top Cow Breeds
+           Top Cow Breeds
         </h2>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -79,6 +79,7 @@ const TipsAndTopBreeds = () => {
         </div>
       </section>
     </div>
+  </section>
   )
 }
 

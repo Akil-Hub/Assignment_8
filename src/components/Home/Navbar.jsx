@@ -48,7 +48,7 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 z-40 w-full bg-gray-900/50 backdrop-blur-2xl ">
       <nav className="wrapper  flex justify-between items-center relative ">
-        <div className="">logo</div>
+        <Image src={'/happycow.svg'} height={60} width={60} alt="logo" className="text-white"/>
         <ul className=" gap-3 hidden md:flex text-white">
           {navItems.map((navItem, index) => (
             <NavLinks key={index} href={navItem.href}>

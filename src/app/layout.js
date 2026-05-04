@@ -1,16 +1,20 @@
-
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Playfair_Display, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import Navbar  from "@/components/Home/Navbar";
+import Navbar from "@/components/Home/Navbar";
 import Footer from "@/components/Home/Footer";
 import { ToastContainer } from "react-toastify";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+});
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -24,9 +28,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-    suppressHydrationWarning 
+      suppressHydrationWarning
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistMono.variable} ${poppins.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider
@@ -35,13 +39,11 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar/>
-        <main>
-            {children}
-        </main>
-        <Footer/>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </ThemeProvider>
-        <ToastContainer/>
+        <ToastContainer />
       </body>
     </html>
   );
