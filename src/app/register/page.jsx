@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -25,16 +26,19 @@ const RegisterPage = () => {
         password,
         image: Image_URL,
         callbackURL: "/",
+        
       },
       {
         onSuccess: () => {
-          router.push("/");
+          
+          router.push("/login");
+          toast.success('Registration Successful')
         },
       },
     );
 
-    if (res) alert("Registration successful! ");
-    if (error) console.log(error);
+    if (res) toast.success("Registration successful! ");
+    if (error) toast.error(error.message);
   };
 
 

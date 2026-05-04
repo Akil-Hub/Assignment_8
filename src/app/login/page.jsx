@@ -1,12 +1,7 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import {
-
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
@@ -43,12 +38,14 @@ const LoginPage = () => {
       {
         onSuccess: () => {
           router.push("/");
+          toast.success("Login Successful");
+
         },
       },
     );
 
-    if (res) alert("Login successful! ");
-    if (error) alert("Login Failed! ", error);
+    if (res) toast.success("Login successful! ");
+    if (error) toast.error("Login Failed! ", error);
   };
   const handleGoogleSignIn = async () => {
     await authClient.signIn.social({ provider: "google" });

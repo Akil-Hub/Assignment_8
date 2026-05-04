@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import ContactForm from "@/components/Home/ContactForm";
 
 const getCow =async (id)=> {
   const res = await fetch(`http://localhost:5000/cows/${id}`, {
@@ -11,7 +12,7 @@ const getCow =async (id)=> {
 
   if (!res.ok) return <p>Error in fetching cows data</p>;
 
-  return res.json();
+  return res.json(); 
 }
 
 export default async function CowDetails({ params }) {
@@ -20,11 +21,11 @@ export default async function CowDetails({ params }) {
   console.log(id)
   const cow = await getCow(id);
 
-  if (!cow) return notFound();
+  if (!cow) return <p>cow not found</p>;
 
   return (
-    <section className="py-30 px-6 ">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+    <section className="py-30 px-6 wrapper ">
+      <div className="wrapper grid md:grid-cols-2 gap-10">
 
         {/* Image Section */}
         <div className="relative w-full h-[400px] rounded-2xl overflow-hidden">
@@ -75,6 +76,13 @@ export default async function CowDetails({ params }) {
         </Card>
 
       </div>
+
+
+<h1 className="text-center text-4xl mt-10">Fill the contact form to reach Goro Bepari</h1>
+      <div className="w-full md:w-180 mx-auto  border-2 my-20 p-8 rounded-lg ">
+        <ContactForm/>
+      </div>
+   
     </section>
   );
 }

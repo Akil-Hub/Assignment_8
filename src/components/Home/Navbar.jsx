@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import {  signOut, useSession } from "@/lib/auth-client";
 import { LogOut, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,6 +39,7 @@ const Navbar = () => {
       fetchOptions: {
         onSuccess: () => {
           router.push("/login");
+          toast.success('User logout successfully.')
            router.refresh()
 
          
@@ -48,7 +51,7 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 z-40 w-full bg-gray-900/50 backdrop-blur-2xl ">
       <nav className="wrapper  flex justify-between items-center relative ">
-        <Image src={'/happycow.svg'} height={60} width={60} alt="logo" className="text-white"/>
+        <Link href={'/'}><Image src={'/happycow.svg'} height={40} width={40} alt="logo" className="text-white"/></Link>
         <ul className=" gap-3 hidden md:flex text-white">
           {navItems.map((navItem, index) => (
             <NavLinks key={index} href={navItem.href}>
@@ -58,7 +61,7 @@ const Navbar = () => {
         </ul>
 
         <div className="flex gap-3 items-center">
-<h2 className="text-white">Welcome {name}</h2>
+<h2 className="text-white text-xs md:text-base">Welcome {name}</h2>
           
 <div className="size-10 rounded-full overflow-hidden relative">
   <Image 
@@ -70,13 +73,14 @@ const Navbar = () => {
 </div>
 
           {isPending ? <p>Session is loading</p>: session?.user ? (
-            <Button onClick={logOut}>Log Out</Button>
+            <Button onClick={logOut} className={'w-15 text-xs h-7 md:w-17 lg:w-20'}>Log Out</Button>
           ) : (
-            <Button onClick={() => router.push("/register")}>Register</Button>
+            <Button className={'w-15 text-xs h-7 md:w-17 lg:w-20'} onClick={() => router.push("/register")}>Register</Button>
           )}
 
+<div className="hidden md:block ">
           <ThemeToggler />
-          <FaBars
+  </div>          <FaBars size={24}
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           />
