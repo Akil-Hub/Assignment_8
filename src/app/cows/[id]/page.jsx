@@ -6,15 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import ContactForm from "@/components/Home/ContactForm";
 import { getCowDetails } from "@/data/data";
 
-// const getCow =async (id)=> {
-//   const res = await fetch(`http://localhost:5000/cows/${id}`, {
-//     cache: "no-store",
-//   });
-
-//   if (!res.ok) return <p>Error in fetching cows data</p>;
-
-//   return res.json(); 
-// }
 
 export default async function CowDetails({ params }) {
 

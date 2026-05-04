@@ -28,16 +28,12 @@ const{name,email,image} = session?.user || {}
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-10 px-4 md:px-10 transition-colors">
       
-      {/* Main Container */}
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
         
-        {/* Cover Section */}
         <div className="h-40 bg-gradient-to-r from-gray-500 to-emerald-600" />
 
-        {/* Profile Content */}
         <div className="px-6 pb-8">
           
-          {/* Avatar + Basic Info */}
           <div className="flex flex-col items-center -mt-16">
             
             <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg">
@@ -58,10 +54,8 @@ const{name,email,image} = session?.user || {}
             </p>
           </div>
 
-          {/* Info Sections */}
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             
-            {/* Account Info */}
             <div className="bg-gray-50 dark:bg-gray-700 p-5 rounded-xl">
               <h3 className="font-semibold text-gray-800 dark:text-white mb-2">
                 Account Info
@@ -71,7 +65,6 @@ const{name,email,image} = session?.user || {}
               </p>
             </div>
 
-            {/* Activity */}
             <div className="bg-gray-50 dark:bg-gray-700 p-5 rounded-xl">
               <h3 className="font-semibold text-gray-800 dark:text-white mb-2">
                 Activity
@@ -82,7 +75,6 @@ const{name,email,image} = session?.user || {}
             </div>
           </div>
 
-          {/* Action Buttons */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             
             <button onClick={()=> router.push('/updateProfile')} className="bg-gray-600 text-white px-6 py-2 rounded-xl hover:bg-gray-700 transition">
