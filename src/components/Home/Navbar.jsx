@@ -69,7 +69,7 @@ const Navbar = () => {
   />
 </div>
 
-          {isPending ? <p>Session is loading</p>: session.user ? (
+          {isPending ? <p>Session is loading</p>: session?.user ? (
             <Button onClick={logOut}>Log Out</Button>
           ) : (
             <Button onClick={() => router.push("/register")}>Register</Button>

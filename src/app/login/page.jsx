@@ -1,13 +1,28 @@
-
 "use client";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React from "react";
+import {
+
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const message = searchParams.get("message");
+  useEffect(() => {
+    if (message) {
+      toast.error(message);
+      router.replace(pathname);
+    }
+  }, [message]);
+
   const router = useRouter();
   const {
     register,
@@ -33,12 +48,11 @@ const LoginPage = () => {
     );
 
     if (res) alert("Login successful! ");
-    if (error) 
-    alert("Login Failed! ", error);
+    if (error) alert("Login Failed! ", error);
   };
-const handleGoogleSignIn = async () => {
-  await authClient.signIn.social({ provider: "google" })
-}
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({ provider: "google" });
+  };
 
   return (
     <section className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-950 px-4">
@@ -68,7 +82,7 @@ const handleGoogleSignIn = async () => {
               required
             />
           </div>
- 
+
           {/* Password */}
           <div>
             <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">
@@ -91,12 +105,15 @@ const handleGoogleSignIn = async () => {
             Login
           </button>
         </form>
-         <div className="flex items-center justify-center">
-                  <button className="w-full font-semibold flex items-center justify-center gap-3 border py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800" onClick={handleGoogleSignIn}>
-                    <FcGoogle className="text-2xl" />
-                    Continue with Google
-                  </button>
-                </div>
+        <div className="flex items-center justify-center">
+          <button
+            className="w-full font-semibold flex items-center justify-center gap-3 border py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+            onClick={handleGoogleSignIn}
+          >
+            <FcGoogle className="text-2xl" />
+            Continue with Google
+          </button>
+        </div>
 
         {/* Register link */}
         <p className="text-center text-sm text-gray-600 dark:text-gray-400">
